@@ -1,0 +1,41 @@
+{
+  "name": "@isuit/base",
+  "version": "0.0.0",
+  "description": "iSuite base",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "compile": "tsc -p tsconfig.json",
+    "compile:publish": "tsc -p tsconfig-publish.json",
+    "lint:base": "eslint -c ./.eslintrc --ext .ts",
+    "lint": "npm run lint:base src",
+    "test": "jest -c jest.config.js ???",
+    "prepare": "npm run compile:publish && husky install ???",
+    "prepublishOnly": "npm run lint && npm run test ???",
+    "version": "auto-changelog -p --template ./changelog.template.hbs && git add CHANGELOG.md ???"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:isuit/base.git"
+  },
+  "author": "Sergey Poskachey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isuit/base/issues"
+  },
+  "homepage": "https://github.com/isuit/base#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jest": "^28.5.0",
+    "jest": "^29.7.0",
+    "sinon": "^18.0.0",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.4.5"
+  }
+}
