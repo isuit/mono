@@ -4,6 +4,10 @@
 ### To disable precommit hook: "git config precommit.disable 1"
 ###
 
+### Settings ###
+
+TS_JS_TYPES="\.(tsx?|jsx?)$"
+
 ### Lib ###
 
 disable=`grep -Pzo '\[precommit\]\s+disable\s+=\s+1' .git/config &> /dev/null || false`
@@ -15,9 +19,13 @@ diff() {
   git diff-index --name-only HEAD --diff-filter ACMRTUXB
 }
 
-grepTypes() {
-  res=`diff | grep -Ec "\.($1)$"`
+grepFiles() {
+  res=`diff | grep -Ec "$1"`
   [[ $res == 0 ]] && return 1 || return 0
+}
+
+grepSrcFiles() {
+  return `grepFiles "^src/.*\.($1)$"`
 }
 
 print() {
@@ -40,37 +48,28 @@ info() {
   infom "$1\n" "${@:2}"
 }
 
-### Main ###
-
 # Lint
 
-if grepTypes "ts|tsx|js|jsx";
-then
+if grepFiles "$TS_JS_TYPES"; then
   infom "Linting..."
-
-  ./node_modules/.bin/eslint -c ./.eslintrc --quiet `diff | grep -P "\.(ts|tsx|js|jsx)$"` || exit 1
-
+  npm run --silent lint -- --quiet `diff | grep -P "$TS_JS_TYPES"` || exit 1
   println "done."
 fi
 
 # Dry compile
 
-if grepTypes "ts|tsx";
-then
+if grepFiles "$TS_JS_TYPES"; then
   infom "Dry compiling..."
-
-  ./node_modules/.bin/tsc -p ./tsconfig.json --noEmit || exit 1
-
+  npm run compile -- --noEmit || exit 1
   println "done."
 fi
 
 # Test
 
-if grepTypes "ts|tsx";
-then
+if grepFiles "$TS_JS_TYPES"; then
   infom "Testing..."
 
-  ./node_modules/.bin/jest -c ./jest.config.js -o || exit 1
+  npm run test:src -- -o || exit 1
 
   println "done."
 fi
