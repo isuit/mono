@@ -6,7 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint -c ./.eslintrc --ext .ts",
-    "lint:src": "npm run lint src"
+    "lint:src": "npm run lint src",
+    "compile": "tsc -p tsconfig.json",
+    "compile:publish": "tsc -p tsconfig-publish.json"
   },
   "repository": {
     "type": "git",
