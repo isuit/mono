@@ -8,7 +8,8 @@
     "lint": "eslint -c ./.eslintrc --ext .ts",
     "lint:src": "npm run lint src",
     "compile": "tsc -p tsconfig.json",
-    "compile:publish": "tsc -p tsconfig-publish.json"
+    "compile:publish": "tsc -p tsconfig-publish.json",
+    "test": "jest -c jest.config.js"
   },
   "repository": {
     "type": "git",
