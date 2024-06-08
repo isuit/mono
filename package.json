@@ -5,6 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "lint": "eslint -c ./.eslintrc --ext .ts",
+    "lint:src": "npm run lint src"
   },
   "repository": {
     "type": "git",
