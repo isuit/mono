@@ -4,6 +4,7 @@ interface Opts {
   header?: string[]
   rowReducer?: (row: string[]) => string[]
   colOrder?: number[] // 1-based
+  colMapper?: (col: string, i: number) => string
   out?: ParseMdTableOut
   outRowSep?: string
 }
@@ -29,6 +30,10 @@ export const parseMdTable = (input: string, opts: Opts = {}): Result => {
 
       if (opts.colOrder) {
         sortRow(row, opts.colOrder);
+      }
+
+      if (opts.colMapper) {
+        row = row.map(opts.colMapper);
       }
 
       return row;

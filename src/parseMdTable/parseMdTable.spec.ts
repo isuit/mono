@@ -201,4 +201,45 @@ Abc;Xyz;Def
       ['Yz', 'Def', 'Abc', 'Xy'],
     ]);
   });
+
+  it('parses with column mapper', () => {
+    const
+      input = `
+        | Foo | BaAr | Baz |
+        | Abc | Xyz  | Def |
+      `,
+      colMapper = (col, i) => {
+        switch (i) {
+          case 0: return col.toUpperCase();
+          case 2: return col.toLowerCase();
+          default: return col;
+        }
+      };
+
+    expect(parseMdTable(input, { colMapper })).toEqual([
+      ['FOO', 'BaAr', 'baz'],
+      ['ABC', 'Xyz', 'def'],
+    ]);
+  });
+
+  it('parses with column mapper & custom column order', () => {
+    const
+      input = `
+        | Foo | BaAr | Baz |
+        | Abc | Xyz  | Def |
+      `,
+      colOrder = [2, 1, 3],
+      colMapper = (col, i) => {
+        switch (i) {
+          case 0: return col.toUpperCase();
+          case 2: return col.toLowerCase();
+          default: return col;
+        }
+      };
+
+    expect(parseMdTable(input, { colOrder, colMapper })).toEqual([
+      ['BAAR', 'Foo', 'baz'],
+      ['XYZ', 'Abc', 'def'],
+    ]);
+  });
 });
