@@ -18,9 +18,10 @@
     }
   },
 
-//  "env": {
+  "env": {
+    "browser": true
 //    "jest/globals": true
-//  },
+  },
 
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
