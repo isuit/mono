@@ -1,6 +1,6 @@
 {
   "name": "isuit-mono.git",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "lint:base": "eslint -c ./.eslintrc --ext .ts --ext .tsx",
