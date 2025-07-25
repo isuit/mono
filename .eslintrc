@@ -1,0 +1,71 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+
+  "parser": "@typescript-eslint/parser",
+
+  "plugins": [
+    "@typescript-eslint",
+    "@stylistic/eslint-plugin-ts"
+  ],
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  },
+
+//  "env": {
+//    "jest/globals": true
+//  },
+
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "max-len": ["error", { "code": 120, "ignoreComments": true }],
+    "strict": "off",
+    "one-var": "off",
+    "no-restricted-globals": "warn",
+    "lines-between-class-members": "off",
+    "object-curly-newline": ["error", { "consistent": true, "minProperties": 0 }],
+    "implicit-arrow-linebreak": "off",
+    "one-var-declaration-per-line": "off",
+    "spaced-comment": "off",
+    "class-methods-use-this": "off",
+    "newline-per-chained-call": "off",
+    "prefer-destructuring": "off",
+    "no-plusplus": "off",
+    "no-unused-expressions": "warn",
+    "no-new": "warn",
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "no-use-before-define": "warn",
+    "arrow-parens": "warn",
+    "camelcase": "warn",
+    "space-before-function-paren": "off",
+    "arrow-body-style": "warn",
+
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "warn",
+    "import/extensions": "off",
+
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@stylistic/ts/member-delimiter-style": ["error", {
+      "singleline": {
+        "delimiter": "comma",
+        "requireLast": false
+      },
+      "multiline": {
+        "delimiter": "none"
+      }
+    }],
+    "@stylistic/ts/indent": ["error", 2, { "SwitchCase": 1 }]
+  },
+
+  "ignorePatterns": [
+    "**/dist"
+  ]
+}

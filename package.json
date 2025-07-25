@@ -1,0 +1,29 @@
+{
+  "name": "isuit-mono.git",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint:base": "eslint -c ./.eslintrc --ext .ts --ext .tsx",
+    "web:dev-server": "webpack serve -c ./src/web/webpack/webpack.config.ts --mode development"
+  },
+  "author": "Sergey Poskachey",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@stylistic/eslint-plugin-ts": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "html-webpack-plugin": "^5.6.3",
+    "husky": "^9.1.7",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-merge": "^6.0.1"
+  }
+}
